@@ -1,0 +1,182 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <style>
+
+        @import url("https://fonts.googleapis.com/css?family=Lato:400,400italic,700,700italic");
+
+        .leftpad {
+            padding-left: 5px;
+        }
+
+        .image-background {
+            background-image: url("https://www.progpilot.com/writeups/resources/banner.jpg");
+            background-size: cover;
+        }
+
+        .header {
+            font-family: 'Roboto Mono', monospace;
+            color: white;
+        }
+
+        .white {
+            color: white;
+        }
+
+        .whitelink, .whitelink:hover, .whitelink:active, .whitelink:visited {
+            color: white;
+        }
+
+        .breadcrumb {
+            margin-bottom: unset;
+            background-color: unset;
+            border-radius: unset;
+        }
+
+        .breadcrumb-item + .breadcrumb-item::before {
+            display: inline-block;
+            padding-right: 0.5rem;
+            color: white;
+            content: ">";
+        }
+
+        body {
+            font-family: "Lato", sans-serif;
+        }
+
+        .navbar a:hover {
+            text-decoration: none;
+        }
+
+        .p-3 {
+            padding: $spacer !important;
+        }
+
+    </style>
+
+    
+        
+    
+
+    <title>print(f) to Pay Respects | ProgPilot writeups</title>
+
+    <meta name="description" content="Writeup by the CTF team ProgPilot for print(f) to Pay Respects (Riceteacatpanda 2020)">
+
+    <meta property="og:title" content="print(f) to Pay Respects">
+
+<meta property="og:site_name" content="progpilot.com">
+<meta property="og:description" content="Writeup by the CTF team ProgPilot for print(f) to Pay Respects (Riceteacatpanda 2020)">
+<meta property="og:url" content="https://www.progpilot.com/writeups/rtcp2020/printf">
+<meta property="og:image" content="https://www.progpilot.com/writeups/resources/progpilot.jpg">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-166229733-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-166229733-1');
+</script>
+
+    
+
+    <style>
+    .videoWrapper {
+    	position: relative;
+    	padding-bottom: 56.25%; /* 16:9 */
+    	padding-top: 25px;
+    	height: 0;
+    }
+    .videoWrapper iframe {
+    	position: absolute;
+    	top: 0;
+    	left: 0;
+    	width: 100%;
+    	height: 100%;
+    }
+
+	img {
+		max-width: 100%;
+		height: auto;
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		border-style: solid;
+		border-width: 1px;
+	}
+    </style>
+
+
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg image-background white">
+    <div class="navbar-brand">
+        <a class="header whitelink" href="https://www.progpilot.com/writeups/">ProgPilot writeups</a>
+    </div>
+
+    <div class="collapse navbar-collapse">
+        <div class="navbar-nav mr-auto">
+            <ol class="breadcrumb">
+                
+                
+                <li class="breadcrumb-item"><a class="whitelink" href="https://www.progpilot.com/writeups/">Home</a></li>
+                
+                
+                
+                <li class="breadcrumb-item"><a class="whitelink" href="../">Riceteacatpanda 2020</a></li>
+                
+                
+                
+                <li class="breadcrumb-item" aria-current="page">print(f) to Pay Respects</li>
+                
+                
+            </ol>
+        </div>
+
+        
+    </div>
+
+</nav>
+
+    <div class="container">
+
+        <div class="p-3"></div>
+
+        
+
+    <h4>Writeup for <b>print(f) to Pay Respects</b></h4>
+    <p>Category: Binary/Excecutable<br>Author: Eryk<br>
+
+        
+
+    </p>
+
+    <p>Firstly I unzipped the folder and tried to run the .exe file, yet it didn’t work. I then dug around in the .json files but no luck there either. I then opened up 7-Zip and opened the .dll file which was inside the folder with the game. I viewed the .text file, scrolled to the right a little bit and lying inside of some text was the string: r t c p { s 0 m 3 t 1 m 3 5 _ 0 n 1 y _ s 0 m 3 t I m E z _ s n ^ k 3 z _ a r 3 _ u 5 E f u L }, so I just deleted the spaces in between and got the flag: <b>rtcp{s0m3t1m35_0n1y_s0m3tImEz_sn^k3z_ar3_u5EfuL}</b>.</p>
+<p><img src="https://cdn.tdpain.net/ctf-writeups/rtcp2020/printf/flag.png" alt="flag"></p>
+<p>You can see the folder supplied with this challenge <a href="https://github.com/codemicro/ctf-writeups/tree/master/rtcp2020/printf/Portal.zip">here</a>.</p>
+<p><img src="https://cdn.tdpain.net/ctf-writeups/rtcp2020/printf/chall.png" alt="chall"></p>
+
+
+
+        <div class="p-3"></div>
+
+        <footer style="font-size: 0.8em;">
+    Site last updated on Mon, 29 June @ 01:22PM<br>
+    Content copyright &copy; <script>document.write(new Date().getFullYear())</script> ProgPilot
+</footer>
+<br>
+
+    </div>
+</body>
+</html>

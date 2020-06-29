@@ -1,0 +1,183 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <style>
+
+        @import url("https://fonts.googleapis.com/css?family=Lato:400,400italic,700,700italic");
+
+        .leftpad {
+            padding-left: 5px;
+        }
+
+        .image-background {
+            background-image: url("https://www.progpilot.com/writeups/resources/banner.jpg");
+            background-size: cover;
+        }
+
+        .header {
+            font-family: 'Roboto Mono', monospace;
+            color: white;
+        }
+
+        .white {
+            color: white;
+        }
+
+        .whitelink, .whitelink:hover, .whitelink:active, .whitelink:visited {
+            color: white;
+        }
+
+        .breadcrumb {
+            margin-bottom: unset;
+            background-color: unset;
+            border-radius: unset;
+        }
+
+        .breadcrumb-item + .breadcrumb-item::before {
+            display: inline-block;
+            padding-right: 0.5rem;
+            color: white;
+            content: ">";
+        }
+
+        body {
+            font-family: "Lato", sans-serif;
+        }
+
+        .navbar a:hover {
+            text-decoration: none;
+        }
+
+        .p-3 {
+            padding: $spacer !important;
+        }
+
+    </style>
+
+    
+        
+    
+
+    <title>HOOOOOME RUNNNN!!!! | ProgPilot writeups</title>
+
+    <meta name="description" content="Writeup by the CTF team ProgPilot for HOOOOOME RUNNNN!!!! (Riceteacatpanda 2020)">
+
+    <meta property="og:title" content="HOOOOOME RUNNNN!!!!">
+
+<meta property="og:site_name" content="progpilot.com">
+<meta property="og:description" content="Writeup by the CTF team ProgPilot for HOOOOOME RUNNNN!!!! (Riceteacatpanda 2020)">
+<meta property="og:url" content="https://www.progpilot.com/writeups/rtcp2020/homerun">
+<meta property="og:image" content="https://www.progpilot.com/writeups/resources/progpilot.jpg">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-166229733-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-166229733-1');
+</script>
+
+    
+
+    <style>
+    .videoWrapper {
+    	position: relative;
+    	padding-bottom: 56.25%; /* 16:9 */
+    	padding-top: 25px;
+    	height: 0;
+    }
+    .videoWrapper iframe {
+    	position: absolute;
+    	top: 0;
+    	left: 0;
+    	width: 100%;
+    	height: 100%;
+    }
+
+	img {
+		max-width: 100%;
+		height: auto;
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		border-style: solid;
+		border-width: 1px;
+	}
+    </style>
+
+
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg image-background white">
+    <div class="navbar-brand">
+        <a class="header whitelink" href="https://www.progpilot.com/writeups/">ProgPilot writeups</a>
+    </div>
+
+    <div class="collapse navbar-collapse">
+        <div class="navbar-nav mr-auto">
+            <ol class="breadcrumb">
+                
+                
+                <li class="breadcrumb-item"><a class="whitelink" href="https://www.progpilot.com/writeups/">Home</a></li>
+                
+                
+                
+                <li class="breadcrumb-item"><a class="whitelink" href="../">Riceteacatpanda 2020</a></li>
+                
+                
+                
+                <li class="breadcrumb-item" aria-current="page">HOOOOOME RUNNNN!!!!</li>
+                
+                
+            </ol>
+        </div>
+
+        
+    </div>
+
+</nav>
+
+    <div class="container">
+
+        <div class="p-3"></div>
+
+        
+
+    <h4>Writeup for <b>HOOOOOME RUNNNN!!!!</b></h4>
+    <p>Category: Crypto<br>Author: Tom<br>
+
+        
+
+    </p>
+
+    <p>Home Run, as it will now be called, was a challenge which formed part of the 2020 Riceteacatpanda CTF. The challenge description detailed how Jake is "rounding the bases", and how he's passing bases 32 and 64, and that there's just "one more base to do ;D". We're also given some ciphertext - <code>Ecbf1HZ_kd8jR5K?[";(7;aJp?[4&gt;J?Slk3&lt;+n'pF]W^,F&gt;._lB/=r</code>.</p>
+<p>If you look up a list of binary to text encoding algorithms (<a href="https://en.wikipedia.org/wiki/Binary-to-text_encoding#Encoding_standards">like this one here on Wikipedia</a>), you can see that the next encoding algorithm after 32 and 64 (that can accept text) is Base85, also known as Ascii85. Cyberchef has a decoding option for this, which you can see <a href="https://gchq.github.io/CyberChef/#recipe=From_Base85('!-u')&input=RWNiZjFIWl9rZDhqUjVLP1siOyg3O2FKcD9bND5KP1NsazM8K24ncEZdV14sRj4uX2xCLz1y">here</a></p><br>
+<p><img src="https://cdn.tdpain.net/ctf-writeups/rtcp2020/homerun/flag.png" alt="flag"></p>
+<p><img src="https://cdn.tdpain.net/ctf-writeups/rtcp2020/homerun/chall.png" alt="chall"></p>
+
+
+
+
+        <div class="p-3"></div>
+
+        <footer style="font-size: 0.8em;">
+    Site last updated on Mon, 29 June @ 01:22PM<br>
+    Content copyright &copy; <script>document.write(new Date().getFullYear())</script> ProgPilot
+</footer>
+<br>
+
+    </div>
+</body>
+</html>
