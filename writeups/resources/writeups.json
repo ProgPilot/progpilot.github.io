@@ -1,0 +1,513 @@
+{
+    "xmas2019": {
+        "name": "X-MAS CTF 2019",
+        "ctftime_event_id": "926",
+        "score": 698,
+        "position": 205,
+        "writeups": {
+            "xmashelper": {
+                "name": "X-MAS Helper",
+                "category": "Web",
+                "author": "Tom",
+                "type": "pdf",
+                "resource": "xmas2019/xmashelper.pdf",
+                "tags": ["thing", "other thing", "three words omgwow"]
+            },
+            "infogatherauto": {
+                "name": "Information Gathering Automation",
+                "category": "Miscellaneous",
+                "author": "Tom",
+                "type": "pdf",
+                "resource": "xmas2019/infogatherauto.pdf"
+            },
+            "matanuicookies": {
+                "name": "Mata Nui's Cookies",
+                "category": "Crypto",
+                "author": "Tom",
+                "type": "pdf",
+                "resource": "xmas2019/matanuicookies.pdf"
+            },
+            "sequelfun": {
+                "name": "Sequel Fun",
+                "category": "Web",
+                "author": "Tom",
+                "type": "pdf",
+                "resource": "xmas2019/sequelfun.pdf"
+            },
+            "foren101": {
+                "name": "Santa's Forensics 101",
+                "category": "Forensics",
+                "author": "Eryk",
+                "type": "pdf",
+                "resource": "xmas2019/foren101.pdf"
+            },
+            "letter": {
+                "name": "Santa's Letter",
+                "category": "Forensics",
+                "author": "Eryk",
+                "type": "pdf",
+                "resource": "xmas2019/letter.pdf"
+            }
+        }
+    },
+    "rtcp2020": {
+        "name": "Riceteacatpanda 2020",
+        "ctftime_event_id": "910",
+        "score": 2830,
+        "position": 188,
+        "total_teams": 2403,
+        "writeups": {
+            "15": {
+                "name": "15",
+                "category": "Crypto",
+                "author": "Tom",
+                "type": "html",
+                "resource": "rtcp2020/15.html"
+            },
+            "box": {
+                "name": "What's in the box?",
+                "category": "Web",
+                "author": "Tom",
+                "type": "html",
+                "resource": "rtcp2020/box.html"
+            },
+            "btscrazed": {
+                "name": "BTS-Crazed",
+                "category": "Crypto",
+                "author": "Tom",
+                "type": "html",
+                "resource": "rtcp2020/btscrazed.html"
+            },
+            "emails": {
+                "name": "Phishing for Flags",
+                "category": "Web",
+                "author": "Tom",
+                "type": "html",
+                "resource": "rtcp2020/emails.html"
+            },
+            "footpads": {
+                "name": "Chugalug's footpads",
+                "category": "Forensics",
+                "author": "Tom",
+                "type": "html",
+                "resource": "rtcp2020/footpads.html"
+            },
+            "homerun": {
+                "name": "HOOOOOME RUNNNN!!!!",
+                "category": "Crypto",
+                "author": "Tom",
+                "type": "html",
+                "resource": "rtcp2020/homerun.html"
+            },
+            "nosleep": {
+                "name": "No Sleep",
+                "category": "Web",
+                "author": "Tom",
+                "type": "html",
+                "resource": "rtcp2020/nosleep.html"
+            },
+            "robots": {
+                "name": "Robots. Yeah, I know, pretty obvious",
+                "category": "Web",
+                "author": "Tom",
+                "type": "html",
+                "resource": "rtcp2020/robots.html"
+            },
+            "sprites": {
+                "name": "Sprite Viewer",
+                "category": "Web",
+                "author": "Tom",
+                "type": "html",
+                "resource": "rtcp2020/sprites.html"
+            },
+            "spritesvideo": {
+                "name": "Sprite Viewer (video)",
+                "category": "Web",
+                "author": "Tom",
+                "type": "youtube",
+                "resource": "9H-tgDSkC3U"
+            },
+            "uwu": {
+                "name": "Uwu?",
+                "category": "Web",
+                "author": "Tom",
+                "type": "html",
+                "resource": "rtcp2020/uwu.html"
+            },
+            "uwuvideo": {
+                "name": "Uwu? (video)",
+                "category": "Web",
+                "author": "Tom",
+                "type": "youtube",
+                "resource": "2aclpaAXKDU"
+            },
+            "printf": {
+                "name": "print(f) to Pay Respects",
+                "category": "Binary/Excecutable",
+                "author": "Eryk",
+                "type": "html",
+                "resource": "rtcp2020/printf.html"
+            },
+            "snakes": {
+                "name": "Snakes",
+                "category": "Binary/Excecutable",
+                "author": "Eryk",
+                "type": "html",
+                "resource": "rtcp2020/snakes.html"
+            },
+            "screwallergies": {
+                "name": "Allergic College Application",
+                "category": "Forensics",
+                "author": "Eryk",
+                "type": "html",
+                "resource": "rtcp2020/college.html"
+            },
+            "catchat": {
+                "name": "cat-chat",
+                "category": "Forensics",
+                "author": "Eryk",
+                "type": "html",
+                "resource": "rtcp2020/catchat.html"
+            },
+            "workinprogress": {
+                "name": "Work in Progress (video)",
+                "category": "Binary/Excecutable",
+                "author": "Eryk",
+                "type": "youtube",
+                "resource": "jxpCP3Hx-4w"
+            }
+        }
+    },
+    "ncim2020": {
+        "name": "Nullcon HackIM 2020",
+        "ctftime_event_id": "962",
+        "score": 362,
+        "position": 144,
+        "total_teams": 1208,
+        "notes": "HackIM 2020 was an incredibly hard CTF, to the extent both members of our team were only able to solve a single challenge combined.<br>The CTF recieved criticism for a couple of things (among others):<ul><li>Some hints had been released after given challenges had been already solved at least once, making it unfair towards the teams that solved the given challenge without them. On top of this, some hints were only disclosed in Discord, which by the way, used far too many un-needed pings.</li><li>This is directly lifted from a comment on the CTFTime event page: \"Releasing an n-day in Firefox as a 36h challenge was a bit too much as well, while no direction where to look was provided. People had understandable concerns about whether the admins had a working proof of concept in the first place. [Not] releasing the solution because the challenge was not solved is also unfair to teams that tried to solve the challenge and will maybe never learn what the solution was. At the same time, I am not sure whether releasing the [proof of concept] is a good idea since it was a 0day from the same version of Firefox (v72).\"</li></ul>Personally, I (Tom) did not think especially highly of HackIM as a CTF, however I did very much enjoy the Dora challenge that I did complete.",
+        "writeups": {
+            "dora": {
+                "name": "Dora",
+                "category": "Miscellaneous",
+                "author": "Tom",
+                "type": "youtube",
+                "resource": "-EoaE5rB_Fw"
+            }
+        }
+    },
+    "nc2020": {
+        "name": "ISSS UTCTF 2020",
+        "ctftime_event_id": "929",
+        "score": 452,
+        "position": 270,
+        "total_teams": 1001,
+        "writeups": {
+            "adminpwn": {
+                "name": "epic admin pwn",
+                "category": "Web",
+                "author": "Tom",
+                "type": "html",
+                "resource": "nc2020/adminpwn.html"
+            },
+            "basicforen": {
+                "name": "[basics] forensics",
+                "category": "Forensics",
+                "author": "Eryk",
+                "type": "html",
+                "resource": "nc2020/basicforen.html"
+            },
+            "observe": {
+                "name": "Observe closely",
+                "category": "Forensics",
+                "author": "Eryk",
+                "type": "html",
+                "resource": "nc2020/observe.html"
+            },
+            "oneperminute": {
+                "name": "1 frame per minute",
+                "category": "Forensics",
+                "author": "Eryk",
+                "type": "html",
+                "resource": "nc2020/oneperminute.html"
+            },
+            "spectre": {
+                "name": "Spectre",
+                "category": "Forensics",
+                "author": "Eryk",
+                "type": "html",
+                "resource": "nc2020/spectre.html"
+            },
+            "spook": {
+                "name": "spooky store",
+                "category": "Web",
+                "author": "Tom",
+                "type": "html",
+                "resource": "nc2020/spook.html"
+            },
+            "zero": {
+                "name": "Zero",
+                "category": "Forensics",
+                "author": "Eryk",
+                "type": "html",
+                "resource": "nc2020/zero.html"
+            }
+        }
+    },
+    "tg2020": {
+        "name": "TG:Hack 2020",
+        "ctftime_event_id": "932",
+        "score": 958,
+        "position": 336,
+        "total_teams": 1076,
+        "writeups": {
+            "s2scomms": {
+                "name": "s2s messaging",
+                "category": "Miscellaneous",
+                "author": "Tom",
+                "type": "youtube",
+                "resource": "zFTiGKPQxHs"
+            },
+            "extractthis": {
+                "name": "Extract this!",
+                "category": "Pwn",
+                "author": "Tom",
+                "type": "html",
+                "resource": "tg2020/extractthis.html"
+            }
+        }
+    },
+    "houseplant2020": {
+        "name": "Houseplant CTF 2020",
+        "ctftime_event_id": "997",
+        "score": 10073,
+        "position": 86,
+        "total_teams": 1887,
+        "notes": "<b>Disclaimer</b>: While I (Tom) am a member of the RiceTeaCatPanda team, I provided no extra support to my teammate (Eryk) who competed on his own.",
+        "writeups": {
+            "beginner": {
+                "name": "All beginner challenges",
+                "category": "Beginner",
+                "author": "Eryk",
+                "type": "html",
+                "resource": "houseplant2020/beginner.html"
+            },
+            "catography": {
+                "name": "Catography",
+                "category": "OSINT",
+                "author": "Eryk",
+                "type": "html",
+                "resource": "houseplant2020/catography.html"
+            },
+            "dafuq": {
+                "name": ".... .- .-.. ..-.",
+                "category": "Crypto",
+                "author": "Eryk",
+                "type": "html",
+                "resource": "houseplant2020/dafuq.html"
+            },
+            "ezoterik": {
+                "name": "Ezoterik",
+                "category": "Forensics",
+                "author": "Eryk",
+                "type": "html",
+                "resource": "houseplant2020/ezoterik.html"
+            },
+            "fences": {
+                "name": "\"fences are cool unless they're taller than you\" - tida",
+                "category": "Crypto",
+                "author": "Eryk",
+                "type": "html",
+                "resource": "houseplant2020/fences.html"
+            },
+            "guitar": {
+                "name": "Jess's guitar",
+                "category": "Forensics",
+                "author": "Eryk",
+                "type": "html",
+                "resource": "houseplant2020/guitar.html"
+            },
+            "miscchalls": {
+                "name": "All miscellaneous challenges",
+                "category": "Miscellaneous",
+                "author": "Eryk",
+                "type": "html",
+                "resource": "houseplant2020/miscchalls.html"
+            },
+            "parasite": {
+                "name": "Parasite",
+                "category": "Crypto",
+                "author": "Eryk",
+                "type": "html",
+                "resource": "houseplant2020/parasite.html"
+            },
+            "rainbowvomit": {
+                "name": "Rainbow Vomit",
+                "category": "Crypto",
+                "author": "Eryk",
+                "type": "html",
+                "resource": "houseplant2020/rainbowvomit.html"
+            },
+            "sizzle": {
+                "name": "Sizzle",
+                "category": "Crypto",
+                "author": "Eryk",
+                "type": "html",
+                "resource": "houseplant2020/sizzle.html"
+            }
+        }
+    },
+    "sharky2020": {
+        "name": "SharkyCTF 2020",
+        "ctftime_event_id": "1034",
+        "score": 335,
+        "position": 404,
+        "total_teams": 828,
+        "writeups": {
+            "basiclsb": {
+                "name": "Basic LSB",
+                "category": "Steganography",
+                "author": "Tom",
+                "type": "html",
+                "resource": "sharky2020/basiclsb.html"
+            },
+            "logsin": {
+                "name": "Logs in! Part 1",
+                "category": "Web",
+                "author": "Tom",
+                "type": "html",
+                "resource": "sharky2020/logsin.html"
+            },
+            "xxexternalxx": {
+                "name": "XXExternalXX",
+                "category": "Web",
+                "author": "Tom",
+                "type": "html",
+                "resource": "sharky2020/xxexternalxx.html"
+            },
+            "trolled": {
+                "name": "Trolled",
+                "category": "Miscellaneous",
+                "author": "Tom",
+                "type": "youtube",
+                "resource": "sBHwPo8uY90"
+            }
+        }
+    },
+    "tj2020": {
+        "name": "TJCTF 2020",
+        "ctftime_event_id": "928",
+        "score": 670,
+        "position": 160,
+        "total_teams": 1209,
+        "notes": "Enjoyable CTF with well thought out challenges, but had issues with flag leakage and subsequent publication via the scoreboard and significant downtime before having the scoreboard rolled back (12+ hours) as a result. Would play again.",
+        "writeups": {
+            "arabfunny": {
+                "name": "Arabfunny",
+                "category": "Miscellaneous",
+                "author": "Tom",
+                "type": "html",
+                "resource": "tj2020/arabfunny.html"
+            },
+            "chordencoder": {
+                "name": "Chord encoder",
+                "category": "Reversing",
+                "author": "Tom",
+                "type": "html",
+                "resource": "tj2020/chordencoder.html"
+            },
+            "fileviewer": {
+                "name": "File viewer",
+                "category": "Web",
+                "author": "Tom",
+                "type": "html",
+                "resource": "tj2020/fileviewer.html"
+            },
+            "forwarding": {
+                "name": "Forwarding (beginners)",
+                "category": "Binary",
+                "author": "Tom",
+                "type": "html",
+                "resource": "tj2020/forwarding.html"
+            },
+            "lingling": {
+                "name": "Ling Ling",
+                "category": "Forensics",
+                "author": "Tom",
+                "type": "html",
+                "resource": "tj2020/lingling.html"
+            },
+            "moarhorse": {
+                "name": "Moar Horse 4",
+                "category": "Web",
+                "author": "Tom",
+                "type": "html",
+                "resource": "tj2020/moarhorse.html",
+                "tags": ["jwt token"]
+            },
+            "palinfan": {
+                "name": "Sarah Palin Fanpage",
+                "category": "Web",
+                "author": "Tom",
+                "type": "html",
+                "resource": "tj2020/palinfan.html",
+                "tags": ["cookies"]
+            },
+            "cryptoorno": {
+                "name": "Is this crypto?",
+                "category": "Crypto",
+                "author": "Eryk",
+                "type": "html",
+                "resource": "tj2020/cryptoorno.html"
+            },
+            "hexee": {
+                "name": "Hexillology",
+                "category": "Forensics",
+                "author": "Eryk",
+                "type": "html",
+                "resource": "tj2020/hexee.html"
+            },
+            "rapgod": {
+                "name": "Rap God",
+                "category": "Forensics",
+                "author": "Eryk",
+                "type": "html",
+                "resource": "tj2020/rapgod.html"
+            },
+            "rsabc": {
+                "name": "RSABC",
+                "category": "Crypto",
+                "author": "Eryk",
+                "type": "html",
+                "resource": "tj2020/rsabc.html"
+            },
+            "tapdancing": {
+                "name": "Tap Dancing",
+                "category": "Crypto",
+                "author": "Eryk",
+                "type": "html",
+                "resource": "tj2020/tapdancing.html"
+            },
+            "titanic": {
+                "name": "Titanic",
+                "category": "Crypto",
+                "author": "Eryk",
+                "type": "html",
+                "resource": "tj2020/titanic.html"
+            },
+            "typewriter": {
+                "name": "Typewriter",
+                "category": "Crypto",
+                "author": "Eryk",
+                "type": "html",
+                "resource": "tj2020/typewriter.html"
+            },
+            "zippedup": {
+                "name": "Zipped up",
+                "category": "Miscellaneous",
+                "author": "Eryk",
+                "type": "html",
+                "resource": "tj2020/zippedup.html"
+            }
+        }
+    }
+}

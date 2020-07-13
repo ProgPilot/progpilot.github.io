@@ -1,0 +1,192 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <style>
+
+        @import url("https://fonts.googleapis.com/css?family=Lato:400,400italic,700,700italic");
+
+        .leftpad {
+            padding-left: 5px;
+        }
+
+        .image-background {
+            background-image: url("https://www.progpilot.com/writeups/resources/banner.jpg");
+            background-size: cover;
+        }
+
+        .header {
+            font-family: 'Roboto Mono', monospace;
+            color: white;
+        }
+
+        .white {
+            color: white;
+        }
+
+        .whitelink, .whitelink:hover, .whitelink:active, .whitelink:visited {
+            color: white;
+        }
+
+        .breadcrumb {
+            margin-bottom: unset;
+            background-color: unset;
+            border-radius: unset;
+        }
+
+        .breadcrumb-item + .breadcrumb-item::before {
+            display: inline-block;
+            padding-right: 0.5rem;
+            color: white;
+            content: ">";
+        }
+
+        body {
+            font-family: "Lato", sans-serif;
+        }
+
+        .navbar a:hover {
+            text-decoration: none;
+        }
+
+        .p-3 {
+            padding: $spacer !important;
+        }
+
+    </style>
+
+    
+        
+    
+
+    <title>Forwarding (beginners) | ProgPilot writeups</title>
+
+    <meta name="description" content="Writeup by the CTF team ProgPilot for Forwarding (beginners) (TJCTF 2020)">
+
+    <meta property="og:title" content="Forwarding (beginners)">
+
+<meta property="og:site_name" content="progpilot.com">
+<meta property="og:description" content="Writeup by the CTF team ProgPilot for Forwarding (beginners) (TJCTF 2020)">
+<meta property="og:url" content="https://www.progpilot.com/writeups/tj2020/forwarding">
+<meta property="og:image" content="https://www.progpilot.com/writeups/resources/progpilot.jpg">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-166229733-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-166229733-1');
+</script>
+
+    
+
+    <style>
+    .videoWrapper {
+    	position: relative;
+    	padding-bottom: 56.25%; /* 16:9 */
+    	padding-top: 25px;
+    	height: 0;
+    }
+    .videoWrapper iframe {
+    	position: absolute;
+    	top: 0;
+    	left: 0;
+    	width: 100%;
+    	height: 100%;
+    }
+
+	img {
+		max-width: 100%;
+		height: auto;
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		border-style: solid;
+		border-width: 1px;
+	}
+    </style>
+
+
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg image-background white">
+    <div class="navbar-brand">
+        <a class="header whitelink" href="https://www.progpilot.com/writeups/">ProgPilot writeups</a>
+    </div>
+
+    <div class="collapse navbar-collapse">
+        <div class="navbar-nav mr-auto">
+            <ol class="breadcrumb">
+                
+                
+                <li class="breadcrumb-item"><a class="whitelink" href="https://www.progpilot.com/writeups/">Home</a></li>
+                
+                
+                
+                <li class="breadcrumb-item"><a class="whitelink" href="../">TJCTF 2020</a></li>
+                
+                
+                
+                <li class="breadcrumb-item" aria-current="page">Forwarding (beginners)</li>
+                
+                
+            </ol>
+        </div>
+
+        
+    </div>
+
+</nav>
+
+    <div class="container">
+
+        <div class="p-3"></div>
+
+        
+
+    <h4>Writeup for <b>Forwarding (beginners)</b></h4>
+    <p>Category: Binary<br>Author: Tom<br>
+
+        
+
+    </p>
+
+    <p><em>Yes, I know, I'm writing a &quot;pointless&quot; writeup for a basic binary challenge. If you're thinking that, this is probably not aimed at you. This is for complete beginners.</em></p>
+<p>Forwarding was a challenge that formed part of the 2020 TJCTF. We're provided with a file with no extension, and since this is a binary challenge, we can assume that this is a executable designed to be run on Linux.</p>
+<p>If we run the executable file, we get asked to guess the flag, and our input is taken.</p>
+<p><img src="https://cdn.tdpain.net/ctf-writeups/tj2020/forwarding/test.png" alt="running executable file"></p>
+<p>There's no way we're going to be able to guess the flag, so we need to disassemble this executable file in order to determine the flag. A tool to do this is called the Interactive Disassembler, or IDA for short. It comes in free and paid versions, but for our purposes we only need the free version. You can download it from <a href="https://www.hex-rays.com/products/ida/support/download_freeware/" target="_blank" rel="noopener">here</a>.</p>
+<p>Open up IDA and load the executable file into it by pressing &quot;new&quot;. Press &quot;ok&quot; on any dialog boxes that pop up.</p>
+<p>If everything worked, you'll see an interface like this.</p>
+<p><img src="https://cdn.tdpain.net/ctf-writeups/tj2020/forwarding/eyedah.png" alt="ida"></p>
+<p>The display you can see here are the low level instructions contained within the executable file file represented in a language called <a href="https://en.wikipedia.org/wiki/Assembly_language" target="_blank" rel="noopener">Assembly</a>. Every instruction is represented by a three or four letter mnemonic (for example, <code>mov</code>, <code>sub</code> or <code>xor</code>). In this case, you don't need to understand the code. It's very verbose and deliberate and often you won't see many people directly programming in Assembly. In this case, the program was probably written in another language (for example, C) and compiled into raw machine code. This machine code is just numbers. Assembly is a form of machine code that's been translated into something that humans find easier to use and work with.</p>
+<p>In this case, the solution to the challenge is to look at the strings contained within the program as these are preserved in plaintext. You can see these in grey in certain areas of the disassembled code, or by going to the strings view by selecting View &gt; Open Subviews &gt; Strings in IDA. The flag is shown in the screenshot above, so here's another screenshot of the strings window.</p>
+<p><img src="https://cdn.tdpain.net/ctf-writeups/tj2020/forwarding/strings.png" alt="string window"></p>
+<p>You can download the executable file file provided with the challenge for yourself <a href="https://www.github.com/codemicro/ctf-writeups/blob/master/tj2020/forwarding/forwarding" target="_blank" rel="noopener">here</a>.</p>
+<p><img src="https://cdn.tdpain.net/ctf-writeups/tj2020/forwarding/chall.png" alt="chall"></p>
+
+
+
+
+        <div class="p-3"></div>
+
+        <footer style="font-size: 0.8em;">
+    Site last updated on Mon, 13 July @ 10:40AM<br>
+    Content copyright &copy; <script>document.write(new Date().getFullYear())</script> ProgPilot
+</footer>
+<br>
+
+    </div>
+</body>
+</html>

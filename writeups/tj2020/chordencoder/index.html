@@ -1,0 +1,285 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <style>
+
+        @import url("https://fonts.googleapis.com/css?family=Lato:400,400italic,700,700italic");
+
+        .leftpad {
+            padding-left: 5px;
+        }
+
+        .image-background {
+            background-image: url("https://www.progpilot.com/writeups/resources/banner.jpg");
+            background-size: cover;
+        }
+
+        .header {
+            font-family: 'Roboto Mono', monospace;
+            color: white;
+        }
+
+        .white {
+            color: white;
+        }
+
+        .whitelink, .whitelink:hover, .whitelink:active, .whitelink:visited {
+            color: white;
+        }
+
+        .breadcrumb {
+            margin-bottom: unset;
+            background-color: unset;
+            border-radius: unset;
+        }
+
+        .breadcrumb-item + .breadcrumb-item::before {
+            display: inline-block;
+            padding-right: 0.5rem;
+            color: white;
+            content: ">";
+        }
+
+        body {
+            font-family: "Lato", sans-serif;
+        }
+
+        .navbar a:hover {
+            text-decoration: none;
+        }
+
+        .p-3 {
+            padding: $spacer !important;
+        }
+
+    </style>
+
+    
+        
+    
+
+    <title>Chord encoder | ProgPilot writeups</title>
+
+    <meta name="description" content="Writeup by the CTF team ProgPilot for Chord encoder (TJCTF 2020)">
+
+    <meta property="og:title" content="Chord encoder">
+
+<meta property="og:site_name" content="progpilot.com">
+<meta property="og:description" content="Writeup by the CTF team ProgPilot for Chord encoder (TJCTF 2020)">
+<meta property="og:url" content="https://www.progpilot.com/writeups/tj2020/chordencoder">
+<meta property="og:image" content="https://www.progpilot.com/writeups/resources/progpilot.jpg">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-166229733-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-166229733-1');
+</script>
+
+    
+
+    <style>
+    .videoWrapper {
+    	position: relative;
+    	padding-bottom: 56.25%; /* 16:9 */
+    	padding-top: 25px;
+    	height: 0;
+    }
+    .videoWrapper iframe {
+    	position: absolute;
+    	top: 0;
+    	left: 0;
+    	width: 100%;
+    	height: 100%;
+    }
+
+	img {
+		max-width: 100%;
+		height: auto;
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		border-style: solid;
+		border-width: 1px;
+	}
+    </style>
+
+
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg image-background white">
+    <div class="navbar-brand">
+        <a class="header whitelink" href="https://www.progpilot.com/writeups/">ProgPilot writeups</a>
+    </div>
+
+    <div class="collapse navbar-collapse">
+        <div class="navbar-nav mr-auto">
+            <ol class="breadcrumb">
+                
+                
+                <li class="breadcrumb-item"><a class="whitelink" href="https://www.progpilot.com/writeups/">Home</a></li>
+                
+                
+                
+                <li class="breadcrumb-item"><a class="whitelink" href="../">TJCTF 2020</a></li>
+                
+                
+                
+                <li class="breadcrumb-item" aria-current="page">Chord encoder</li>
+                
+                
+            </ol>
+        </div>
+
+        
+    </div>
+
+</nav>
+
+    <div class="container">
+
+        <div class="p-3"></div>
+
+        
+
+    <h4>Writeup for <b>Chord encoder</b></h4>
+    <p>Category: Reversing<br>Author: Tom<br>
+
+        
+
+    </p>
+
+    <p>Chord encoder was a challenge that formed part of the 2020 TJCTF. We were given some chords mapped to 3 or 4 digit long numbers, some encoded sheet music and an encoder script.</p>
+<p>First, a quick rundown of the script. Initially, it loads the flag from a file called <code>song.txt</code> which we don't get, defines a dictionary called <code>l</code> which maps numbers to upper case letters and loads the chords into another dictionary.</p>
+<pre><code class="language-python">f = open('song.txt').read()
+
+l = {'1':'A', '2':'B', '3':'C', '4':'D', '5':'E', '6':'F', '7':'G'}
+chords = {}
+for i in open('chords.txt').readlines():
+	c, n = i.strip().split()
+	chords[c] = n
+    # would look like this: chords = {'A': '0112', 'B': '2110', 'C': '1012', 'D': '020', 'E': '0200', 'F': '1121', 'G': '001', 'a': '0122', 'b': '2100', 'c': '1002', 'd': '010', 'e': '0100', 'f': '1011', 'g': '000'}
+</code></pre>
+<p>It then begins iterating through each character. First, it turns the character into a numeral representation, puts that in hexadecimal and then splits each hex character to be processed independently.</p>
+<pre><code class="language-python">s = ''
+for i in f:
+	c1, c2 = hex(ord(i))[2:]  # [2:] just removes '0x'
+</code></pre>
+<p>Then, <code>c1</code> and <code>c2</code> are checked to see if their value is a number in <code>l</code>. If it is, it's replaced with the corresponding letter, for example <code>2</code> becomes <code>B</code>. Pre-existing letters are left in place, but they are always lowercase since the <code>hex</code> function in Python always returns lowercase letters (remember this for later). Then, <code>c1</code> and <code>c2</code> are used as keys in the dictionary of chords and concatenated to the output string which is eventually saved to <code>notes.txt</code>, which is our encoded sheet music.</p>
+<pre><code class="language-python">	if c1 in l:
+		c1 = l[c1]
+	if c2 in l:
+		c2 = l[c2]
+	s += chords[c1] + chords[c2]
+open('notes.txt', 'w').write(s)
+</code></pre>
+<hr>
+<p>So, how do we solve this?</p>
+<p>All we need to do is map the values from the chords dictionary back into letters, turn the upper case letters back into numbers and decode those numbers back into characters to get our flag. Simple!</p>
+<p>Our encoded sheet music looks like this:</p>
+<pre><code>1121112111211002112101121121001001210000101221121011200102000110120200101100100111211011001020020010111012011202001011112110121121011211211002112110020200101111210112020010111121010112102001121100211211011020020001010
+</code></pre>
+<p>We can then split this long string into groups of three or four digits to correspond to values from the chords dictionary and then group those into pairs since each character code made by <code>hex(ord(i))[2:]</code> produces two values. By doing this, we can also get the letters used as keys for the chords dictionary.</p>
+<pre><code>1121 1121 FF
+1121 1002 Fc
+1121 0112 F(A/a)
+1121 001 FG
+001 2100 Gb
+001 0122 G(A/a)
+1121 0112 F(A/a)
+001 020 GD
+001 1012 GC
+0200 1011 Ef
+001 001 GG
+1121 1011 Ff
+001 020 GD
+0200 1011 Ef
+1012 0112 C(A/a)
+0200 1011 Ef
+1121 1012 FC
+1121 0112 F(A/a)
+1121 1002 Fc
+1121 1002 Fc
+0200 1011 Ef
+1121 0112 F(A/a)
+0200 1011 Ef
+1121 010 Fd
+1121 0200 FE
+1121 1002 Fc
+1121 1011 Ff
+020 020 DD
+001 010 Gd
+</code></pre>
+<p>Notice those <code>(A/a)</code> bits?</p>
+<p>In the chords file, both <code>A</code> and <code>a</code> have the same numeric value unlike all other values, are different depending on the case. This means we'll have to do some trial and error to determine the correct flag.</p>
+<p><code>(A/a)</code> occurs 6 times in the encoded string, and each of those 6 can either be one of two values, meaning there's <code>6^2</code> combinations (that's 64). We <em>could</em> do this manually, but that's no fun. The smart way to do it is write a quick script that finds all the combinations for us, converts the rest of the letters from the message into characters, decodes them and does trial and error on the others. That script looked like this:</p>
+<pre><code class="language-python">import itertools
+import copy
+
+letters = ['FF', 'Fc', 'FA', 'FG', 'Gb', 'GA', 'FA', 'GD', 'GC', 'Ef', 'GG', 'Ff', 'GD', 'Ef', 'CA', 'Ef', 'FC', 'FA', 'Fc', 'Fc', 'Ef', 'FA', 'Ef', 'Fd', 'FE', 'Fc', 'Ff', 'DD', 'Gd']  # the letter combinations we worked out from the encoded chords
+
+# l = {'1':'A', '2':'B', '3':'C', '4':'D', '5':'E', '6':'F', '7':'G'}
+inv_l = {'A': '1', 'B': '2', 'C': '3', 'D': '4', 'E': '5', 'F': '6', 'G': '7'}
+
+combinations = list(itertools.product([True,False], repeat=6))  # True represents A, False represents a
+
+def replace_uppercase(li):
+  # Replaces uppercase letters with corresponding numbers
+  for k in inv_l:
+    for index, it in enumerate(li):
+      li[index] = it.replace(k, inv_l[k])
+
+  return li
+
+def convert_to_string(li):
+  # Converts the converted hex numbers into a string
+  for index, letter in enumerate(li):
+	  li[index] = chr(int(letter, base=16))
+
+  return &quot;&quot;.join(li)
+
+for combo in combinations:
+  a_count = 0
+  tli = copy.deepcopy(letters)
+  for index, letter in enumerate(tli):
+    if &quot;A&quot; in letter:
+      tli[index] = letter.replace(&quot;A&quot;, &quot;A&quot; if combo[a_count] else &quot;a&quot;)
+      a_count += 1
+  tli = replace_uppercase(tli)
+  tli = convert_to_string(tli)
+  if &quot;flag&quot; in tli:  # if the word flag is spelt wrong there's no way it's correct
+    print(tli)
+</code></pre>
+<p>That script produced this output:</p>
+<p><img src="https://cdn.tdpain.net/ctf-writeups/tj2020/chordencoder/flag.png" alt="magic"></p>
+<p>I chose the most sensible looking option (which is highlighted) and submitted that. It worked.</p>
+<p>You can download the resources provided with this challenge <a href="https://github.com/codemicro/ctf-writeups/blob/master/tj2020/chordencoder/" target="_blank" rel="noopener">here</a>.</p>
+<p><img src="https://cdn.tdpain.net/ctf-writeups/tj2020/chordencoder/chall.png" alt="chall"></p>
+
+
+
+
+        <div class="p-3"></div>
+
+        <footer style="font-size: 0.8em;">
+    Site last updated on Mon, 13 July @ 10:40AM<br>
+    Content copyright &copy; <script>document.write(new Date().getFullYear())</script> ProgPilot
+</footer>
+<br>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,184 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <style>
+
+        @import url("https://fonts.googleapis.com/css?family=Lato:400,400italic,700,700italic");
+
+        .leftpad {
+            padding-left: 5px;
+        }
+
+        .image-background {
+            background-image: url("https://www.progpilot.com/writeups/resources/banner.jpg");
+            background-size: cover;
+        }
+
+        .header {
+            font-family: 'Roboto Mono', monospace;
+            color: white;
+        }
+
+        .white {
+            color: white;
+        }
+
+        .whitelink, .whitelink:hover, .whitelink:active, .whitelink:visited {
+            color: white;
+        }
+
+        .breadcrumb {
+            margin-bottom: unset;
+            background-color: unset;
+            border-radius: unset;
+        }
+
+        .breadcrumb-item + .breadcrumb-item::before {
+            display: inline-block;
+            padding-right: 0.5rem;
+            color: white;
+            content: ">";
+        }
+
+        body {
+            font-family: "Lato", sans-serif;
+        }
+
+        .navbar a:hover {
+            text-decoration: none;
+        }
+
+        .p-3 {
+            padding: $spacer !important;
+        }
+
+    </style>
+
+    
+        
+    
+
+    <title>Observe closely | ProgPilot writeups</title>
+
+    <meta name="description" content="Writeup by the CTF team ProgPilot for Observe closely (ISSS UTCTF 2020)">
+
+    <meta property="og:title" content="Observe closely">
+
+<meta property="og:site_name" content="progpilot.com">
+<meta property="og:description" content="Writeup by the CTF team ProgPilot for Observe closely (ISSS UTCTF 2020)">
+<meta property="og:url" content="https://www.progpilot.com/writeups/nc2020/observe">
+<meta property="og:image" content="https://www.progpilot.com/writeups/resources/progpilot.jpg">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-166229733-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-166229733-1');
+</script>
+
+    
+
+    <style>
+    .videoWrapper {
+    	position: relative;
+    	padding-bottom: 56.25%; /* 16:9 */
+    	padding-top: 25px;
+    	height: 0;
+    }
+    .videoWrapper iframe {
+    	position: absolute;
+    	top: 0;
+    	left: 0;
+    	width: 100%;
+    	height: 100%;
+    }
+
+	img {
+		max-width: 100%;
+		height: auto;
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		border-style: solid;
+		border-width: 1px;
+	}
+    </style>
+
+
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg image-background white">
+    <div class="navbar-brand">
+        <a class="header whitelink" href="https://www.progpilot.com/writeups/">ProgPilot writeups</a>
+    </div>
+
+    <div class="collapse navbar-collapse">
+        <div class="navbar-nav mr-auto">
+            <ol class="breadcrumb">
+                
+                
+                <li class="breadcrumb-item"><a class="whitelink" href="https://www.progpilot.com/writeups/">Home</a></li>
+                
+                
+                
+                <li class="breadcrumb-item"><a class="whitelink" href="../">ISSS UTCTF 2020</a></li>
+                
+                
+                
+                <li class="breadcrumb-item" aria-current="page">Observe closely</li>
+                
+                
+            </ol>
+        </div>
+
+        
+    </div>
+
+</nav>
+
+    <div class="container">
+
+        <div class="p-3"></div>
+
+        
+
+    <h4>Writeup for <b>Observe closely</b></h4>
+    <p>Category: Forensics<br>Author: Eryk<br>
+
+        
+
+    </p>
+
+    <html><body><p>This challenge was very janky for me. I did it some b-tec way, which I'm sure I wasn't supposed to use, but hey, I got the flag. You had to open the file using an external program in order to see the hidden file inside of it (I used WinRAR, but programs like 7Zip will work as well). You open the file and see another file called "hidden_binary". I was doing this CTF on a windows machine, and this was a UNIX file (which was evident from previewing the contents of the file using notepad).</p>
+<p>And now, the proper way of doing this was probably to run a Linux based OS and normally open the file. What I did though, is that I opened the hidden binary file and notices that the message and the flag is in the file, yet it had some weird letters and symbols intertwined within it as such: "Ah, you Hfound meHE HUfE! Hutflag{2Hfbe9adc2HEHUHad89c71dHa48cabe9HEHUH0a121c0}" using the big brain that I have, I notices that he previous flag didn't have any capital letters and any odd letters, so I just went along the string removing capital letters and odd symbols.</p>
+<p>The flag was: "utflag{2fbe9adc2ad89c71da48cabe90a121c0}"</p>
+<p>You can see the file for this challenge <a href="https://github.com/codemicro/ctf-writeups/blob/master/ut2020/observe/Griffith_Observatory.png" rel="noopener" target="_blank">here</a>.</p>
+<p><img alt="Challenge" src="https://cdn.tdpain.net/ctf-writeups/ut2020/observe/chall.png"/></p>
+</body></html>
+
+
+
+        <div class="p-3"></div>
+
+        <footer style="font-size: 0.8em;">
+    Site last updated on Mon, 13 July @ 10:40AM<br>
+    Content copyright &copy; <script>document.write(new Date().getFullYear())</script> ProgPilot
+</footer>
+<br>
+
+    </div>
+</body>
+</html>
